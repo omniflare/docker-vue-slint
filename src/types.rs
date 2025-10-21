@@ -8,3 +8,11 @@ pub struct Container {
     pub state : Option<ContainerSummaryStateEnum>,
     pub ports : Option<Vec<String>>,
 }
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Image {
+    pub id: String,
+    pub repo_tags: Vec<String>,
+    pub size : i64
+}
+
