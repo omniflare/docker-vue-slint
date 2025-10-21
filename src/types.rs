@@ -1,5 +1,4 @@
 use serde::{Serialize, Deserialize};
-use std::collections::HashMap;
 use bollard::models::ContainerSummaryStateEnum;
 
 #[derive(Debug, Serialize, Deserialize)]
