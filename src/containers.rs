@@ -2,7 +2,7 @@ use std::collections::HashMap;
 
 use bollard::models::ContainerCreateBody;
 use bollard::query_parameters::{
-    KillContainerOptions, RemoveContainerOptions, StopContainerOptions,
+    KillContainerOptions, PruneContainersOptions, RemoveContainerOptions, StopContainerOptions
 };
 use bollard::{
     query_parameters::{
@@ -311,4 +311,11 @@ pub async fn delete_container(state: &AppState, name: &str) -> Result<(), Comman
             }
         }
     }
+}
+
+pub async fn prune_containers (state : &AppState) -> Result<(), CommandError> {
+    let docker = &state.docker ;
+    let options = PruneContainersOptions::default();
+    let _res = docker.prune_containers(Some(options)).await.map_err(|e| CommandError::DockerError(e.to_string()));
+    Ok(())
 }

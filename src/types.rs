@@ -16,3 +16,15 @@ pub struct Image {
     pub size : i64
 }
 
+#[derive(Serialize, Deserialize, Debug, Clone)]
+pub struct ProgressInfo {
+    pub status: String,
+    pub progress_detail: Option<ProgressDetail>,
+    pub id: Option<String>
+}
+
+#[derive(Serialize, Deserialize, Debug, Clone)]
+pub struct ProgressDetail {
+    pub current: Option<i64>,
+    pub total: Option<i64>
+}
